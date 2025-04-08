@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <section className="max-w-screen-lg mx-auto px-4 pt-12 md:pt-20 pb-12">
       <div className="grid place-items-center mb-4">
-        <svg viewBox="-10.5 -9.45 21 18.9" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#58C4DC] size-40 md:size-80 xl:size-96">
+        <svg viewBox="-10.5 -9.45 21 18.9" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary size-40 md:size-80 xl:size-96">
           <circle cx="0" cy="0" r="2" fill="currentColor"></circle>
           <g stroke="currentColor" strokeWidth="1" fill="none">
             <ellipse rx="10" ry="4.5"></ellipse>
