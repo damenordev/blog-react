@@ -12,11 +12,12 @@ export const metadata: Metadata = {
 // Renombrar esta página si es necesario para reflejar que es el editor
 export default function PlaygroundEditorPage() {
   return (
-    <div className="container mx-auto py-12 px-4">
+    <main className="container mx-auto">
+      {/* <Loading /> */}
       {/* Eliminamos el componente Welcome de aquí */}
       <Suspense fallback={<Loading />}>
         <PlaygroundClient />
       </Suspense>
-    </div>
+    </main>
   )
 }

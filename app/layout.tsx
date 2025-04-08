@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Footer, Header } from '@/components'
+import { Header } from '@/components'
 import { APP_METADATA } from '@/constants'
 import { ILayout } from '@/types'
 import { cn, getFontsVariables } from '@/styles'
@@ -15,7 +15,6 @@ export default async function RootLayout({ children }: ILayout) {
       <body className={cn(getFontsVariables(), 'dark w-full overflow-x-hidden min-h-screen flex flex-col bg-background text-foreground')}>
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   )

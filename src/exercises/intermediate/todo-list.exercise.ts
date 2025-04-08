@@ -10,119 +10,119 @@ export const todoListExercise: IExercise = {
     'Cada tarea debe tener un id único, texto y estado de completado.',
     'Implementa un formulario para añadir nuevas tareas.',
     'Añade botones para completar y eliminar tareas.',
-    'Considera usar un estilo diferente para las tareas completadas.'
+    'Considera usar un estilo diferente para las tareas completadas.',
+    'Un botón para eliminar cada tarea individualmente puede ser útil.',
   ],
-  initialCode: `import React, { useState } from 'react';
-
+  initialCode: `
 function TodoList() {
   // Define los estados para las tareas y el input
-  
-  // Función para manejar el cambio en el input
-  
-  // Función para añadir una nueva tarea
-  
-  // Función para marcar una tarea como completada
-  
-  // Función para eliminar una tarea
-  
-  return (
-    <div className="todo-app">
-      <h2>Lista de Tareas</h2>
-      
-      {/* Formulario para añadir tareas */}
-      
-      {/* Lista de tareas */}
-      
-    </div>
+  const [tasks, setTasks] = React.useState([]);
+  const [newTask, setNewTask] = React.useState('');
+
+  // Función para añadir una tarea
+  const addTask = () => {
+    if (newTask.trim() !== '') {
+      // Asegúrate de añadir un objeto con id único y texto
+      setTasks([...tasks, { id: Date.now(), text: newTask }]); 
+      setNewTask(''); // Limpia el input
+    }
+  };
+
+  // Función para eliminar una tarea (necesitarás pasar el id)
+  const removeTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
+
+  return React.createElement('div', null, 
+    React.createElement('h2', null, 'Lista de Tareas'),
+    React.createElement('input', { 
+      type: 'text', 
+      value: newTask, 
+      onChange: (e) => setNewTask(e.target.value), 
+      placeholder: 'Nueva tarea' 
+    }),
+    React.createElement('button', { onClick: addTask }, 'Añadir'),
+    React.createElement('ul', null, 
+      tasks.map(task => (
+        React.createElement('li', { key: task.id }, 
+          task.text, 
+          React.createElement('button', { onClick: () => removeTask(task.id), style: { marginLeft: '10px' } }, 'Eliminar')
+        )
+      ))
+    )
   );
 }
 
-export default TodoList;
+// La variable result es necesaria para el playground
+const result = React.createElement(TodoList);
 `,
-  solution: `import React, { useState } from 'react';
-
+  solution: `
 function TodoList() {
-  // Estado para las tareas
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Aprender React', completed: false },
-    { id: 2, text: 'Crear un componente', completed: true }
-  ]);
-  
-  // Estado para el input de nueva tarea
-  const [newTodoText, setNewTodoText] = useState('');
-  
-  // Manejar cambio en el input
-  const handleInputChange = (e) => {
-    setNewTodoText(e.target.value);
+  const [tasks, setTasks] = React.useState([]);
+  const [newTask, setNewTask] = React.useState('');
+
+  const handleInputChange = (event) => {
+    setNewTask(event.target.value);
   };
-  
-  // Añadir nueva tarea
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (!newTodoText.trim()) return;
-    
-    const newTodo = {
-      id: Date.now(),
-      text: newTodoText,
-      completed: false
+
+  const handleAddTask = () => {
+    if (newTask.trim() === '') return; // No añadir tareas vacías
+    const taskToAdd = { 
+      id: Date.now(), // Usar timestamp como id simple
+      text: newTask,
+      completed: false // Añadir estado de completado
     };
-    
-    setTodos([...todos, newTodo]);
-    setNewTodoText('');
+    setTasks(prevTasks => [...prevTasks, taskToAdd]);
+    setNewTask(''); // Limpiar input después de añadir
+  };
+
+  const handleRemoveTask = (taskId) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
   };
   
-  // Marcar tarea como completada
-  const toggleComplete = (id) => {
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        return { ...todo, completed: !todo.completed };
-      }
-      return todo;
-    });
-    
-    setTodos(updatedTodos);
+  const handleToggleComplete = (taskId) => {
+    setTasks(prevTasks => 
+      prevTasks.map(task => 
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
-  
-  // Eliminar tarea
-  const deleteTodo = (id) => {
-    const filteredTodos = todos.filter(todo => todo.id !== id);
-    setTodos(filteredTodos);
-  };
-  
-  return (
-    <div className="todo-app">
-      <h2>Lista de Tareas</h2>
-      
-      {/* Formulario para añadir tareas */}
-      <form onSubmit={addTodo}>
-        <input 
-          type="text"
-          value={newTodoText}
-          onChange={handleInputChange}
-          placeholder="Añade una nueva tarea"
-        />
-        <button type="submit">Añadir</button>
-      </form>
-      
-      {/* Lista de tareas */}
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-            <span onClick={() => toggleComplete(todo.id)}>
-              {todo.text}
-            </span>
-            <button onClick={() => deleteTodo(todo.id)}>
-              Eliminar
-            </button>
-          </li>
-        ))}
-      </ul>
-      
-      {todos.length === 0 && <p>No hay tareas pendientes.</p>}
-    </div>
+
+  return React.createElement('div', null,
+    React.createElement('h1', null, 'Lista de Tareas'),
+    React.createElement('div', { style: { display: 'flex', marginBottom: '10px' } },
+      React.createElement('input', {
+        type: 'text',
+        value: newTask,
+        onChange: handleInputChange,
+        placeholder: 'Añadir nueva tarea'
+      }),
+      React.createElement('button', { onClick: handleAddTask }, 'Añadir')
+    ),
+    React.createElement('ul', { style: { listStyle: 'none', padding: 0 } },
+      tasks.map(task => (
+        React.createElement('li', { 
+          key: task.id, 
+          style: { 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between', 
+            marginBottom: '5px',
+            textDecoration: task.completed ? 'line-through' : 'none' 
+          }
+        },
+          React.createElement('span', { 
+            onClick: () => handleToggleComplete(task.id),
+            style: { cursor: 'pointer' }
+          }, task.text),
+          React.createElement('button', { onClick: () => handleRemoveTask(task.id) }, 'Eliminar')
+        )
+      ))
+    )
   );
 }
 
-export default TodoList;
+// La variable result es necesaria para el playground
+const result = React.createElement(TodoList);
 `
 }

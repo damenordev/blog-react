@@ -15,17 +15,15 @@ export const fetchApiDataExercise: IExercise = {
     'Muestra los datos en una lista.',
     'Maneja posibles errores durante la solicitud.',
   ],
-  initialCode: `import React, { useState, useEffect } from 'react';
+  initialCode: `function DataFetcher() {
+  const [data, setData] = React.useState(null); // Cambiado useState por React.useState
+  const [loading, setLoading] = React.useState(true); // Cambiado useState por React.useState
+  const [error, setError] = React.useState(null); // Cambiado useState por React.useState
 
-function DataFetcher() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
+  React.useEffect(() => { // Cambiado useEffect por React.useEffect
     // Tu código para obtener datos aquí
     // Actualiza los estados de data, loading y error según corresponda
-    // Ejemplo: fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+    // Ejemplo: fetch('[https://jsonplaceholder.typicode.com/posts?_limit=5')](https://jsonplaceholder.typicode.com/posts?_limit=5'))
     //   .then(response => {
     //     if (!response.ok) throw new Error('Network response was not ok');
     //     return response.json();
@@ -33,92 +31,117 @@ function DataFetcher() {
     //   .then(setData)
     //   .catch(setError)
     //   .finally(() => setLoading(false));
+    
+    // Simulación de fetch para el ejemplo sin import
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        // Simulamos una espera de red
+        await new Promise(resolve => setTimeout(resolve, 1000)); 
+        // Simulamos datos recibidos
+        const fakeData = [
+          { id: 1, title: 'Post de ejemplo 1' },
+          { id: 2, title: 'Post de ejemplo 2' },
+        ];
+        setData(fakeData);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err);
+        } else {
+          setError(new Error('Ocurrió un error desconocido'));
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+    
   }, []);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return React.createElement('div', null, 'Cargando...'); // Usando React.createElement
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return React.createElement('div', null, 'Error: ', error.message); // Usando React.createElement
   }
 
   return (
-    <div>
-      <h1>Datos de la API</h1>
-      {/* Tu código para mostrar los datos aquí */}
-      {/* Ejemplo: data && <ul>{data.map(item => <li key={item.id}>{item.title}</li>)}</ul> */}
-      {data ? (
-        <ul>
-          {/* Renderiza los items aquí si data no es null */}
-        </ul>
+    React.createElement('div', null, 
+      React.createElement('h1', null, 'Datos de la API'),
+      data ? (
+        React.createElement('ul', null, 
+          data.map(item => React.createElement('li', { key: item.id }, item.title))
+        )
       ) : (
-        <p>No hay datos para mostrar.</p>
-      )}
-    </div>
+        React.createElement('p', null, 'No hay datos para mostrar.')
+      )
+    )
   );
 }
 
-export default DataFetcher;
+// No es necesario export default aquí para el playground
+// export default DataFetcher; 
+
+// La variable 'result' que espera el playground
+const result = React.createElement(DataFetcher); 
+}
 `,
-  solution: `import React, { useState, useEffect } from 'react';
-
+  solution: `
 function DataFetcher() {
-  const [data, setData] = useState([]); // Inicializa como array vacío
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [data, setData] = React.useState([]); 
+  const [loading, setLoading] = React.useState(true); 
+  const [error, setError] = React.useState(null); 
 
-  useEffect(() => {
+  React.useEffect(() => { 
     const fetchData = async () => {
-      setLoading(true); // Inicia la carga
-      setError(null); // Resetea errores previos
+      setLoading(true); 
+      setError(null); 
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10'); // Limitamos a 10 posts
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10'); 
         if (!response.ok) {
-          throw new Error(\`HTTP error! status: \${response.status}\`);
+          throw new Error('HTTP error! status: ' + response.status); 
         }
-        const result = await response.json();
-        setData(result);
+        const fetchedResult = await response.json(); 
+        setData(fetchedResult);
       } catch (err) {
-         // Aseguramos que err sea un objeto Error
         if (err instanceof Error) {
            setError(err);
         } else {
            setError(new Error('Ocurrió un error desconocido'));
         }
       } finally {
-        setLoading(false); // Finaliza la carga independientemente del resultado
+        setLoading(false); 
       }
     };
 
     fetchData();
-  }, []); // El array vacío asegura que useEffect se ejecute solo una vez al montar
+  }, []); 
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return React.createElement('div', null, 'Cargando...'); 
   }
 
   if (error) {
-    // Mostramos el mensaje de error
-    return <div>Error: {error.message}</div>;
+    return React.createElement('div', null, 'Error: ', error.message); 
   }
 
-  return (
-    <div>
-      <h1>Datos de la API (Posts)</h1>
-      {data.length > 0 ? (
-         <ul>
-           {data.map(item => (
-             <li key={item.id}>{item.title}</li>
-           ))}
-         </ul>
-      ) : (
-        <p>No se encontraron datos.</p> // Mensaje si no hay datos después de cargar
-      )}
-    </div>
+  return React.createElement('div', null, 
+    React.createElement('h1', null, 'Datos de la API (Posts)'),
+    data.length > 0 ? (
+       React.createElement('ul', null, 
+         data.map(item => (
+           React.createElement('li', { key: item.id }, item.title)
+         ))
+       )
+    ) : (
+      React.createElement('p', null, 'No se encontraron datos.')
+    )
   );
 }
 
-export default DataFetcher;
+const result = React.createElement(DataFetcher); 
+}
 `
 }

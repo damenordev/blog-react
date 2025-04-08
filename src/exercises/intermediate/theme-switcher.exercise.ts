@@ -12,119 +12,82 @@ export const themeSwitcherExercise: IExercise = {
     'Usa className condicional o estilos en línea para aplicar los estilos del tema.',
     'Considera utilizar variables CSS para definir los colores de cada tema.'
   ],
-  initialCode: `import React, { useState } from 'react';
-import './styles.css'; // Asume que tienes un archivo CSS para los estilos
+  initialCode: `
+// Asume que tienes estilos globales o un archivo CSS importado para los temas
 
 function ThemeSwitcher() {
-  // Define tu estado para el tema aquí
-  
-  // Función para cambiar entre temas
-  
-  return (
-    <div className="theme-container">
-      <h2>Selector de Tema</h2>
-      
-      {/* Contenido de ejemplo que mostrará los diferentes estilos */}
-      <div className="content">
-        <h3>Título de Ejemplo</h3>
-        <p>Este es un párrafo de ejemplo para mostrar los diferentes estilos según el tema seleccionado.</p>
-        <button>Botón de Ejemplo</button>
-      </div>
-      
-      {/* Botón o switch para cambiar el tema */}
-      
-    </div>
-  );
-}
+  // Define tu estado para el tema aquí (ej. 'light' o 'dark')
+  const [theme, setTheme] = React.useState('light');
 
-export default ThemeSwitcher;
-`,
-  solution: `import React, { useState } from 'react';
-import './styles.css'; // Asume que tienes un archivo CSS para los estilos
-
-function ThemeSwitcher() {
-  // Estado para controlar el tema actual
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-  
-  // Función para alternar entre temas
+  // Función para cambiar el tema
   const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+    setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));
   };
-  
-  // Clases CSS basadas en el tema actual
-  const themeClass = isDarkTheme ? 'dark-theme' : 'light-theme';
-  
-  return (
-    <div className={\`theme-container \${themeClass}\`}>
-      <h2>Selector de Tema</h2>
-      
-      {/* Contenido de ejemplo */}
-      <div className="content">
-        <h3>Título de Ejemplo</h3>
-        <p>Este es un párrafo de ejemplo para mostrar los diferentes estilos según el tema seleccionado.</p>
-        <button className="example-button">Botón de Ejemplo</button>
-      </div>
-      
-      {/* Botón para cambiar el tema */}
-      <button 
-        className="theme-toggle" 
-        onClick={toggleTheme}
-      >
-        Cambiar a tema {isDarkTheme ? 'claro' : 'oscuro'}
-      </button>
-      
-      {/* Estilos CSS en línea */}
-      <style jsx={\`
-        /* Estilos base */
-        .theme-container {
-          padding: 20px;
-          border-radius: 8px;
-          transition: all 0.3s ease;
-        }
-        
-        /* Tema claro (predeterminado) */
-        .light-theme {
-          background-color: #f5f5f5;
-          color: #333;
-        }
-        
-        .light-theme button {
-          background-color: #4a90e2;
-          color: white;
-        }
-        
-        /* Tema oscuro */
-        .dark-theme {
-          background-color: #333;
-          color: #f5f5f5;
-        }
-        
-        .dark-theme button {
-          background-color: #61dafb;
-          color: #333;
-        }
-        
-        /* Otros estilos */
-        .content {
-          margin: 20px 0;
-        }
-        
-        button {
-          padding: 8px 16px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          margin-top: 10px;
-        }
-        
-        .theme-toggle {
-          margin-top: 20px;
-        }
-      \`}</style>
-    </div>
+
+  // Devuelve los elementos usando React.createElement
+  // Aplica una clase basada en el tema al div principal
+  return React.createElement('div', { className: \`theme-\${theme}\`, style: {
+      padding: '20px',
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+      // Estilos básicos para demostración
+      backgroundColor: theme === 'light' ? '#fff' : '#333',
+      color: theme === 'light' ? '#333' : '#fff'
+    } },
+    React.createElement('h2', null, 'Selector de Tema'),
+    React.createElement('p', null, \`Tema actual: \${theme}\`),
+    React.createElement('button', { onClick: toggleTheme }, 'Cambiar Tema')
   );
 }
 
-export default ThemeSwitcher;
+// Variable result necesaria
+const result = React.createElement(ThemeSwitcher);
+`,
+  solution: `
+// Asume que tienes estilos globales o un archivo CSS importado para los temas
+// Ejemplo de cómo podrían definirse las variables CSS:
+/*
+:root {
+  --background-light: #fff;
+  --text-light: #333;
+  --background-dark: #333;
+  --text-dark: #fff;
+}
+
+.theme-light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.theme-dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+*/
+
+function ThemeSwitcher() {
+  const [theme, setTheme] = React.useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  // useEffect para cambiar la clase en el body o un elemento contenedor global si fuera necesario
+  // React.useEffect(() => {
+  //   document.body.className = \`theme-\${theme}\`;
+  // }, [theme]);
+
+  return React.createElement('div', { 
+    className: \`theme-\${theme}\`, // Aplica la clase del tema
+    style: { padding: '20px', border: '1px solid #ccc', borderRadius: '5px' } // Estilos base
+  }, 
+    React.createElement('h1', null, 'Selector de Tema'), 
+    React.createElement('p', null, \`El tema actual es: \${theme}\`),
+    React.createElement('button', { onClick: toggleTheme }, 'Cambiar Tema')
+  );
+}
+
+// Variable result necesaria
+const result = React.createElement(ThemeSwitcher);
 `
 }

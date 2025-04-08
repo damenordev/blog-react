@@ -9,63 +9,55 @@ export const counterExercise: IExercise = {
     'Usa el hook `useState` para mantener el estado del contador.',
     'Crea funciones para incrementar y decrementar el contador.',
     'Usa botones con controladores de eventos onClick para llamar a esas funciones.',
-    'Muestra el valor actual del contador en algún lugar del componente.'
+    'Muestra el valor actual del contador en algún lugar del componente.',
+    'Considera usar botones para los eventos onClick.'
   ],
-  initialCode: `import React, { useState } from 'react';
-
+  initialCode: `
 function Counter() {
-  // Usa useState para mantener el valor del contador
-  
-  // Crea funciones para incrementar y decrementar el contador
-  
-  return (
-    <div>
-      <h2>Contador</h2>
-      {/* Muestra el valor del contador */}
-      
-      {/* Botones para incrementar y decrementar */}
-      
-    </div>
+  // Usa React.useState para mantener el valor del contador
+  const [count, setCount] = React.useState(0);
+
+  // Función para incrementar el contador
+  const increment = () => setCount(count + 1);
+
+  // Función para decrementar el contador
+  const decrement = () => setCount(count - 1);
+
+  return React.createElement('div', null, 
+    React.createElement('h2', null, 'Contador: ', count),
+    React.createElement('button', { onClick: increment }, 'Incrementar'),
+    React.createElement('button', { onClick: decrement }, 'Decrementar')
   );
 }
 
-export default Counter;
+// La variable result es necesaria para el playground
+const result = React.createElement(Counter);
 `,
-  solution: `import React, { useState } from 'react';
-
+  solution: `
 function Counter() {
-  // Inicializamos el estado del contador con valor 0
-  const [count, setCount] = useState(0);
-  
-  // Función para incrementar
+  // Define el estado 'count' inicializado en 0 usando React.useState
+  const [count, setCount] = React.useState(0);
+
+  // Función para incrementar el contador
   const increment = () => {
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1); // Forma segura de actualizar el estado basado en el anterior
   };
-  
-  // Función para decrementar
+
+  // Función para decrementar el contador
   const decrement = () => {
-    setCount(count - 1);
+    setCount(prevCount => prevCount - 1);
   };
-  
-  // Función para resetear
-  const reset = () => {
-    setCount(0);
-  };
-  
-  return (
-    <div>
-      <h2>Contador</h2>
-      <p>Valor actual: <strong>{count}</strong></p>
-      
-      <div>
-        <button onClick={decrement}>-</button>
-        <button onClick={reset}>Reset</button>
-        <button onClick={increment}>+</button>
-      </div>
-    </div>
+
+  return React.createElement('div', null, 
+    React.createElement('h2', null, 'Contador: ', count),
+    React.createElement('div', { style: { display: 'flex', gap: '8px' } },
+      React.createElement('button', { onClick: increment }, '+'),
+      React.createElement('button', { onClick: decrement }, '-')
+    )
   );
 }
 
-export default Counter;
+// La variable result es necesaria para el playground
+const result = React.createElement(Counter);
 `
 }
