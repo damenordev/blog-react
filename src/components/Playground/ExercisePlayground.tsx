@@ -5,24 +5,24 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs'
-import { REACT_EXERCISES } from '@/constants'
+import { ALL_EXERCISES, IExercise } from '@/exercises'
 
 import { CodeEditor } from './CodeEditor'
 import { Preview } from './Preview'
 
 export const ExercisePlayground = () => {
-  const [selectedExerciseId, setSelectedExerciseId] = useState(REACT_EXERCISES[0].id)
+  const [selectedExerciseId, setSelectedExerciseId] = useState(ALL_EXERCISES[0].id)
   const [code, setCode] = useState('')
   const [showHint, setShowHint] = useState(false)
   const [currentHintIndex, setCurrentHintIndex] = useState(0)
 
   // Obtener el ejercicio seleccionado
-  const selectedExercise = REACT_EXERCISES.find((exercise) => exercise.id === selectedExerciseId) || REACT_EXERCISES[0]
+  const selectedExercise = ALL_EXERCISES.find((exercise: IExercise) => exercise.id === selectedExerciseId) || ALL_EXERCISES[0]
 
   // Manejar el cambio de ejercicio
   const handleExerciseChange = (value: string) => {
     setSelectedExerciseId(value)
-    const newExercise = REACT_EXERCISES.find((exercise) => exercise.id === value) || REACT_EXERCISES[0]
+    const newExercise = ALL_EXERCISES.find((exercise: IExercise) => exercise.id === value) || ALL_EXERCISES[0]
     setCode(newExercise.initialCode)
     setShowHint(false)
     setCurrentHintIndex(0)
@@ -69,7 +69,7 @@ export const ExercisePlayground = () => {
               <SelectValue placeholder="Selecciona un ejercicio" />
             </SelectTrigger>
             <SelectContent>
-              {REACT_EXERCISES.map((exercise) => (
+              {ALL_EXERCISES.map((exercise: IExercise) => (
                 <SelectItem key={exercise.id} value={exercise.id}>
                   {exercise.title} ({exercise.difficulty})
                 </SelectItem>
