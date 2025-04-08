@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { Bell, HelpCircle, Home, LucideIcon, Settings, Shield } from 'lucide-react'
+import { FileText, Home, LucideIcon, User } from 'lucide-react'
 
 import { useOnClickOutside } from '@/hooks'
 import { cn } from '@/styles'
@@ -11,6 +11,7 @@ import { cn } from '@/styles'
 interface Tab {
   title: string
   icon: LucideIcon
+  href?: string
   type?: never
 }
 
@@ -18,17 +19,18 @@ interface Separator {
   type: 'separator'
   title?: never
   icon?: never
+  href?: never
 }
 
 type TabItem = Tab | Separator
 
-const headerTabs: TabItem[] = [
-  { title: 'Inicio', icon: Home },
-  { title: 'Notificaciones', icon: Bell },
+// Pestañas actualizadas para el blog
+const blogTabs: TabItem[] = [
+  { title: 'Inicio', icon: Home, href: '/' },
+  { title: 'Artículos', icon: FileText, href: '/articles' }, // Usando FileText para artículos
+  // { title: 'Cheat Sheet', icon: ClipboardList, href: '/cheat-sheet' }, // Opcional
   { type: 'separator' },
-  { title: 'Ajustes', icon: Settings },
-  { title: 'Ayuda', icon: HelpCircle },
-  { title: 'Seguridad', icon: Shield },
+  { title: 'Sobre Mí', icon: User, href: '/about' }, // Usando User para sobre mí
 ]
 
 interface ExpandableTabsProps {
@@ -68,9 +70,19 @@ function ExpandableTabs({ tabs, className, activeColor, onChange }: ExpandableTa
     onChange?.(null)
   })
 
+  // Navegación al seleccionar una pestaña con href
   const handleSelect = (index: number) => {
     setSelected(index)
     onChange?.(index)
+
+    // Buscar la pestaña seleccionada para obtener el href
+    const selectedTab = tabs[index]
+    if (selectedTab.type !== 'separator' && selectedTab.href) {
+      // Idealmente, usarías next/link o router.push aquí
+      // Por ahora, solo mostramos en consola
+      console.log(`Navegar a: ${selectedTab.href}`)
+      // router.push(selectedTab.href) // Ejemplo si tuvieras router
+    }
   }
 
   const SeparatorComponent = () => <div className="mx-1 h-[24px] w-[1.2px] bg-border" aria-hidden="true" />
@@ -83,6 +95,7 @@ function ExpandableTabs({ tabs, className, activeColor, onChange }: ExpandableTa
         }
 
         const Icon = tab.icon
+        // El botón ahora maneja la navegación si existe href
         return (
           <motion.button
             key={tab.title}
@@ -115,11 +128,12 @@ function ExpandableTabs({ tabs, className, activeColor, onChange }: ExpandableTa
 export const Header = () => {
   const handleTabChange = (index: number | null) => {
     console.log('Selected tab index:', index)
+    // La navegación ahora se maneja en handleSelect dentro de ExpandableTabs
   }
 
   return (
     <header className="fixed top-4 left-1/2 z-50 -translate-x-1/2 transform">
-      <ExpandableTabs tabs={headerTabs} onChange={handleTabChange} />
+      <ExpandableTabs tabs={blogTabs} onChange={handleTabChange} />
     </header>
   )
 }
