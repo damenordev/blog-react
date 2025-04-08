@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { FileText, Home, LucideIcon, User } from 'lucide-react'
+import { FileText, Home, LucideIcon, User, Code } from 'lucide-react'
 
 import { useOnClickOutside } from '@/hooks'
 import { cn } from '@/styles'
@@ -28,7 +28,7 @@ type TabItem = Tab | Separator
 const blogTabs: TabItem[] = [
   { title: 'Inicio', icon: Home, href: '/' },
   { title: 'Artículos', icon: FileText, href: '/articles' }, // Usando FileText para artículos
-  // { title: 'Cheat Sheet', icon: ClipboardList, href: '/cheat-sheet' }, // Opcional
+  { title: 'Playground', icon: Code, href: '/playground' }, // Nuevo enlace al playground
   { type: 'separator' },
   { title: 'Sobre Mí', icon: User, href: '/about' }, // Usando User para sobre mí
 ]
