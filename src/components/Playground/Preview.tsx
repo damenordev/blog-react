@@ -42,7 +42,7 @@ export const Preview = ({ code, showError = true }: IPreviewProps) => {
                   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
                   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
                   <style>
-                    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; }
+                    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; color: white; padding: 0 24px; }
                     .error { color: red; background: #ffeeee; padding: 10px; border-radius: 4px; }
                     .container { padding: 10px; }
                   </style>
