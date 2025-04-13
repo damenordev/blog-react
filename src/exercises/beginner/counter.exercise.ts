@@ -1,9 +1,62 @@
 import { IExercise } from '../types'
 
+// Código inicial para /App.tsx
+const initialAppCode = `import React, { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
+  return (
+    <div>
+      <h2>Contador: {count}</h2>
+      <button onClick={increment}>Incrementar</button>
+      <button onClick={decrement}>Decrementar</button>
+    </div>
+  );
+}
+`;
+
+// Código de la solución para /App.tsx
+const solutionAppCode = `import React, { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
+  const decrement = () => {
+    setCount(prevCount => prevCount - 1);
+  };
+
+  return (
+    <div>
+      <h2>Contador: {count}</h2>
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <button onClick={increment}>+</button>
+        <button onClick={decrement}>-</button>
+      </div>
+    </div>
+  );
+}
+`;
+
+// Punto de entrada estándar para Sandpack React
+const indexCode = `import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);`;
+
 export const counterExercise: IExercise = {
   id: 'counter',
   title: 'Contador Simple',
-  description: 'Un componente con un contador que puede incrementarse y decrementarse usando el estado de React.',
+  description: 'Crea un componente con estado que incremente y decremente un contador.',
   difficulty: 'beginner',
   hints: [
     'Usa el hook `useState` para mantener el estado del contador.',
@@ -12,52 +65,12 @@ export const counterExercise: IExercise = {
     'Muestra el valor actual del contador en algún lugar del componente.',
     'Considera usar botones para los eventos onClick.'
   ],
-  initialCode: `
-function Counter() {
-  // Usa React.useState para mantener el valor del contador
-  const [count, setCount] = React.useState(0);
-
-  // Función para incrementar el contador
-  const increment = () => setCount(count + 1);
-
-  // Función para decrementar el contador
-  const decrement = () => setCount(count - 1);
-
-  return React.createElement('div', null, 
-    React.createElement('h2', null, 'Contador: ', count),
-    React.createElement('button', { onClick: increment }, 'Incrementar'),
-    React.createElement('button', { onClick: decrement }, 'Decrementar')
-  );
-}
-
-// La variable result es necesaria para el playground
-const result = React.createElement(Counter);
-`,
-  solution: `
-function Counter() {
-  // Define el estado 'count' inicializado en 0 usando React.useState
-  const [count, setCount] = React.useState(0);
-
-  // Función para incrementar el contador
-  const increment = () => {
-    setCount(prevCount => prevCount + 1); // Forma segura de actualizar el estado basado en el anterior
-  };
-
-  // Función para decrementar el contador
-  const decrement = () => {
-    setCount(prevCount => prevCount - 1);
-  };
-
-  return React.createElement('div', null, 
-    React.createElement('h2', null, 'Contador: ', count),
-    React.createElement('div', { style: { display: 'flex', gap: '8px' } },
-      React.createElement('button', { onClick: increment }, '+'),
-      React.createElement('button', { onClick: decrement }, '-')
-    )
-  );
-}
-
-// La variable result es necesaria para el playground
-const result = React.createElement(Counter);
-`
+  initialFiles: {
+    '/App.tsx': initialAppCode,
+    '/index.tsx': indexCode,
+  },
+  solutionFiles: {
+    '/App.tsx': solutionAppCode,
+    '/index.tsx': indexCode,
+  }
 }

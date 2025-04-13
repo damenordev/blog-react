@@ -1,21 +1,20 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+// Importaciones de Sandpack
+import { SandpackProvider, SandpackLayout, SandpackCodeEditor, SandpackPreview, SandpackFileExplorer, SandpackConsole } from '@codesandbox/sandpack-react'
+import type { SandpackFiles } from '@codesandbox/sandpack-react' // Tipo para los archivos
 
 import { Button } from '@/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/ui/select'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs'
 import { ALL_EXERCISES, IExercise } from '@/exercises'
 import { Badge } from '@/ui/badge'
-import { Code, BookOpen, RefreshCw, Lightbulb, Play, Lock, ChevronRight } from 'lucide-react'
+import { BookOpen, RefreshCw, Lightbulb, Lock, ChevronRight } from 'lucide-react'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/ui/sheet'
-
-import { CodeEditor } from './CodeEditor'
-import { Preview } from './Preview'
 
 export const ExercisePlayground = () => {
   const [selectedExerciseId, setSelectedExerciseId] = useState(ALL_EXERCISES[0].id)
-  const [code, setCode] = useState('')
+  const [files, setFiles] = useState<SandpackFiles>({}) // Estado para los archivos de Sandpack
   const [currentHintIndex, setCurrentHintIndex] = useState(0)
   const [discoveredHints, setDiscoveredHints] = useState<number[]>([])
   const [isHintSheetOpen, setIsHintSheetOpen] = useState(false)
@@ -23,30 +22,31 @@ export const ExercisePlayground = () => {
   // Obtener el ejercicio seleccionado
   const selectedExercise = ALL_EXERCISES.find((exercise: IExercise) => exercise.id === selectedExerciseId) || ALL_EXERCISES[0]
 
+  // Adaptar la función para inicializar/cambiar los archivos
+  const initializeFiles = (exercise: IExercise) => {
+    // Asegurarnos de que el tipo coincida (TExerciseFiles a SandpackFiles)
+    setFiles(exercise.initialFiles as SandpackFiles)
+  }
+
   // Manejar el cambio de ejercicio
   const handleExerciseChange = (value: string) => {
     setSelectedExerciseId(value)
     const newExercise = ALL_EXERCISES.find((exercise: IExercise) => exercise.id === value) || ALL_EXERCISES[0]
-    setCode(newExercise.initialCode)
+    initializeFiles(newExercise)
     setCurrentHintIndex(0)
     setDiscoveredHints([])
   }
 
-  // Manejar el cambio de código
-  const handleCodeChange = (value: string) => {
-    setCode(value)
-  }
-
   // Reiniciar el código al estado inicial
   const handleReset = () => {
-    setCode(selectedExercise.initialCode)
+    initializeFiles(selectedExercise)
     setCurrentHintIndex(0)
     setDiscoveredHints([])
   }
 
   // Mostrar la solución
   const handleShowSolution = () => {
-    setCode(selectedExercise.solution)
+    setFiles(selectedExercise.solutionFiles as SandpackFiles)
   }
 
   // Revelar la siguiente pista
@@ -77,10 +77,11 @@ export const ExercisePlayground = () => {
     setIsHintSheetOpen(true)
   }
 
-  // Inicializar el código cuando cambia el ejercicio seleccionado
+  // Inicializar los archivos cuando cambia el ejercicio seleccionado o al montar
   useEffect(() => {
-    setCode(selectedExercise.initialCode)
-  }, [selectedExercise.initialCode])
+    initializeFiles(selectedExercise)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExerciseId]) // Depender de selectedExerciseId para reiniciar al cambiar
 
   // Mapeo de dificultad a color de badge
   const difficultyColor = {
@@ -90,7 +91,7 @@ export const ExercisePlayground = () => {
   }
 
   return (
-    <div className="flex flex-col space-y-6 max-w-full pt-20">
+    <div className="flex-1 flex flex-col space-y-6 max-w-full pt-20 h-full relative">
       {/* Header con título y descripción */}
       <div className="space-y-2">
         <div className="flex items-center gap-3">
@@ -195,25 +196,24 @@ export const ExercisePlayground = () => {
         </div>
       </div>
 
-      {/* Editor y Preview */}
-      <Tabs defaultValue="editor" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-4">
-          <TabsTrigger value="editor" className="gap-2">
-            <Code className="h-4 w-4" />
-            Editor
-          </TabsTrigger>
-          <TabsTrigger value="preview" className="gap-2">
-            <Play className="h-4 w-4" />
-            Vista previa
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="editor" className="h-[600px] bg-background rounded-lg p-0 border-0">
-          <CodeEditor initialCode={code} onChange={handleCodeChange} language="javascript" />
-        </TabsContent>
-        <TabsContent value="preview" className="h-[600px] bg-background rounded-lg p-0 border-0">
-          <Preview code={code} />
-        </TabsContent>
-      </Tabs>
+      {/* Editor y Preview con Sandpack */}
+      <div className="flex-1 rounded-lg overflow-hidden border h-full">
+        <SandpackProvider
+          template="react-ts" // Usamos la plantilla react-ts
+          files={files}
+          className="flex-1 w-full flex"
+          theme="dark" // Opcional: tema claro/oscuro automático
+        >
+          <SandpackLayout className="h-full w-full">
+            {/* Estructura manual del layout */}
+            <SandpackFileExplorer />
+            <SandpackCodeEditor className="h-full w-full" />
+            {/* Contenedor para Preview y Consola */}
+            <SandpackPreview style={{ flex: 1 }} /> {/* Ocupa el espacio principal */}
+          </SandpackLayout>
+          <SandpackConsole style={{ height: '150px' }} /> {/* Altura fija para la consola */}{' '}
+        </SandpackProvider>
+      </div>
     </div>
   )
 }

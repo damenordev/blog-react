@@ -1,9 +1,25 @@
 import { IExercise } from '../types'
 
+// Código del componente principal del ejercicio
+const appCode = `import React from 'react';
+
+export default function HelloWorld() {
+  return <h1>¡Hola Mundo!</h1>;
+}
+`;
+
+// Punto de entrada estándar para Sandpack React
+const indexCode = `import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+
+const root = createRoot(document.getElementById('root'));
+root.render(<App />);`;
+
 export const helloWorldExercise: IExercise = {
   id: 'hello-world',
-  title: 'Hola Mundo en React',
-  description: 'Un simple componente que muestra un mensaje de "Hola Mundo".',
+  title: 'Hola Mundo',
+  description: 'Crea tu primer componente en React que muestre "¡Hola Mundo!"', // Añadida comilla simple faltante
   difficulty: 'beginner',
   hints: [
     'En React, los componentes son funciones que devuelven JSX.',
@@ -12,23 +28,12 @@ export const helloWorldExercise: IExercise = {
     'Recuerda envolver el texto en un elemento HTML válido como <h1> o <p>.',
     'El componente debe ser una función.'
   ],
-  initialCode: `
-function HelloWorld() {
-  // Tu código aquí
-  // Debe devolver un elemento que muestre '¡Hola Mundo!'
-  return React.createElement('h1', null, '¡Hola Mundo!'); // Ejemplo usando React.createElement
-}
-
-// La variable result es necesaria para el playground
-const result = React.createElement(HelloWorld);
-`,
-  solution: `
-function HelloWorld() {
-  // Simplemente devuelve el elemento h1 con el texto
-  return React.createElement('h1', null, '¡Hola Mundo!'); // Usando React.createElement
-}
-
-// La variable result es necesaria para el playground
-const result = React.createElement(HelloWorld);
-`
+  initialFiles: {
+    '/App.tsx': appCode,
+    '/index.tsx': indexCode,
+  },
+  solutionFiles: {
+    '/App.tsx': appCode, // La solución es igual al código inicial en este caso
+    '/index.tsx': indexCode,
+  }
 }

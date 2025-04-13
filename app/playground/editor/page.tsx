@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 // Renombrar esta página si es necesario para reflejar que es el editor
 export default function PlaygroundEditorPage() {
   return (
-    <main className="container mx-auto">
+    // Asegura que main crezca y sea flex columnar
+    <main className="container mx-auto flex-1 flex flex-col">
       {/* <Loading /> */}
       {/* Eliminamos el componente Welcome de aquí */}
       <Suspense fallback={<Loading />}>

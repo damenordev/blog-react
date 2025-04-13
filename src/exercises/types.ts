@@ -1,5 +1,8 @@
 export type TExerciseDifficulty = 'beginner' | 'intermediate' | 'advanced'
 
+// Tipo para la estructura de archivos que espera Sandpack
+export type TExerciseFiles = Record<string, string>
+
 export interface IExerciseDetails {
   id: string
   title: string
@@ -9,6 +12,6 @@ export interface IExerciseDetails {
 }
 
 export interface IExercise extends IExerciseDetails {
-  initialCode: string
-  solution: string
+  initialFiles: TExerciseFiles // Archivos iniciales para Sandpack
+  solutionFiles: TExerciseFiles // Archivos de la solución para Sandpack
 }
