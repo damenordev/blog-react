@@ -1,0 +1,52 @@
+[
+  {
+    "question": "¿Cuál de las siguientes afirmaciones sobre JSX es correcta?",
+    "options": [
+      { "label": "JSX es una sintaxis exclusiva de HTML", "value": "a" },
+      { "label": "JSX permite insertar expresiones JavaScript entre llaves", "value": "b" },
+      { "label": "JSX solo funciona en archivos .html", "value": "c" },
+      { "label": "JSX no puede usarse con TypeScript", "value": "d" }
+    ],
+    "answer": "b"
+  },
+  {
+    "question": "¿Qué atributo debes usar en JSX para definir una clase CSS?",
+    "options": [
+      { "label": "class", "value": "a" },
+      { "label": "className", "value": "b" },
+      { "label": "cssClass", "value": "c" },
+      { "label": "styleClass", "value": "d" }
+    ],
+    "answer": "b"
+  },
+  {
+    "question": "¿Cuál es la principal ventaja de React respecto a manipular el DOM directamente?",
+    "options": [
+      { "label": "React actualiza el DOM de forma eficiente usando el Virtual DOM", "value": "a" },
+      { "label": "React elimina la necesidad de CSS", "value": "b" },
+      { "label": "React solo sirve para móviles", "value": "c" },
+      { "label": "React reemplaza a JavaScript", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Qué etiqueta debe cerrarse correctamente en JSX?",
+    "options": [
+      { "label": "<img>", "value": "a" },
+      { "label": "<div>", "value": "b" },
+      { "label": "<section>", "value": "c" },
+      { "label": "<h1>", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Qué palabra clave se recomienda para definir componentes funcionales en React con TypeScript?",
+    "options": [
+      { "label": "function", "value": "a" },
+      { "label": "const", "value": "b" },
+      { "label": "var", "value": "c" },
+      { "label": "let", "value": "d" }
+    ],
+    "answer": "b"
+  }
+]
