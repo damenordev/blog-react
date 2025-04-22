@@ -29,7 +29,7 @@
 
 4. **Investiga y Planifica (usando secuencial tool):**
 
-   - Realiza una búsqueda web (usando `search_web`, `mcp2_brave_web_search` o `mcp4_duckduckgo_web_search`) sobre el tema identificado. Prioriza la documentación oficial de React 19 (`react.dev`), MDN y blogs técnicos reconocidos.
+   - Realiza una búsqueda web (usando `search_web`, `mcp2_brave_web_search` o `mcp4_duckduckgo_web_search`, `mcp0_resolve-library-id` y `mcp0_get-library-docs` si aplica y para completar la investigación) sobre el tema identificado. Prioriza la documentación oficial de React 19 (`react.dev`), MDN y blogs técnicos reconocidos.
    - Si se mencionan librerías o conceptos específicos (ej: `useState`, `useEffect`), busca documentación detallada sobre ellos (`mcp0_resolve-library-id` y `mcp0_get-library-docs` si aplica).
    - Estructura el contenido siguiendo las secciones obligatorias listadas abajo.
 

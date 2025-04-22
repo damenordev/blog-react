@@ -4,8 +4,8 @@
 
 ## React 19
 
-- [ ] Introducción a React y JSX
-- [ ] Componentes funcionales y props
+- [x] Introducción a React y JSX
+- [x] Componentes funcionales y props
 - [ ] Estado y hooks básicos
 - [ ] Renderizado condicional y listas
 - [ ] Eventos y formularios
