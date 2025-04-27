@@ -6,9 +6,9 @@
 
 - [x] Introducción a React y JSX
 - [x] Componentes funcionales y props
-- [ ] Estado y hooks básicos
-- [ ] Renderizado condicional y listas
-- [ ] Eventos y formularios
+- [x] Estado y hooks básicos
+- [x] Renderizado condicional y listas
+- [x] Eventos y formularios
 - [ ] Hooks avanzados
 - [ ] Contexto y estado global
 - [ ] Renderizado en servidor y Server Components

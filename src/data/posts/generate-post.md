@@ -153,3 +153,5 @@
 ---
 
 **Nota Final:** Tu éxito se medirá por la adherencia estricta a `sequentialthinking`, el cumplimiento de todas las restricciones (especialmente longitud, profundidad y reglas de las memorias), la calidad técnica del contenido generado y la precisión en el seguimiento de la estructura de archivos y la checklist. Si encuentras ambigüedades, prioriza preguntar al usuario sobre asumir incorrectamente.
+
+**IMPORTANTE:** Siempre detalla lo máximo posible el post, optimizando para seo con tono amigable y accesible.

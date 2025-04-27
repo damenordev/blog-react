@@ -266,10 +266,7 @@ const Card = ({ header, body, footer }: ICardProps) => (
 
 ## Recursos recomendados
 
-- [Componentes y props (React 19 docs)](https://es.react.dev/learn/passing-props-to-a-component)
-- [Pensando en React (React 19 docs)](https://react.dev/learn/thinking-in-react)
-- [Composición y children (React 19 docs)](https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children)
-- [Patrones avanzados de componentes (Medium)](https://medium.com/@rashmipatil24/advanced-react-patterns-and-best-practices-74cd09a7c2d9)
+- [Documentación oficial de React (español)](https://es.react.dev/learn)
 
 ---
 

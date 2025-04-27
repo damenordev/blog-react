@@ -1,0 +1,52 @@
+[
+  {
+    "question": "¿Cuál es la principal diferencia entre un formulario controlado y uno no controlado en React?",
+    "options": [
+      { "label": "El formulario controlado gestiona su valor mediante el estado de React, el no controlado usa refs", "value": "a" },
+      { "label": "El formulario controlado solo funciona con TypeScript", "value": "b" },
+      { "label": "El formulario no controlado requiere useState obligatoriamente", "value": "c" },
+      { "label": "No existe diferencia, ambos son iguales", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Qué tipo de evento usarías para manejar el envío de un formulario en React?",
+    "options": [
+      { "label": "React.FormEvent", "value": "a" },
+      { "label": "React.MouseEvent", "value": "b" },
+      { "label": "React.ChangeEvent", "value": "c" },
+      { "label": "React.KeyboardEvent", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Cuál es una buena práctica para asegurar accesibilidad en formularios React?",
+    "options": [
+      { "label": "Asociar cada input con un label usando htmlFor", "value": "a" },
+      { "label": "Usar solo placeholders y no labels", "value": "b" },
+      { "label": "Evitar mensajes de error", "value": "c" },
+      { "label": "No usar roles ARIA nunca", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Qué anti-patrón es común al validar formularios en React?",
+    "options": [
+      { "label": "No limpiar el error tras corregir el input", "value": "a" },
+      { "label": "Validar en onChange y onBlur", "value": "b" },
+      { "label": "Usar estados para errores", "value": "c" },
+      { "label": "Extraer lógica de validación a funciones", "value": "d" }
+    ],
+    "answer": "a"
+  },
+  {
+    "question": "¿Cuál es el tipo correcto para tipar el evento de cambio de un input de texto en React + TypeScript?",
+    "options": [
+      { "label": "React.ChangeEvent<HTMLInputElement>", "value": "a" },
+      { "label": "EventTarget", "value": "b" },
+      { "label": "React.MouseEvent<HTMLButtonElement>", "value": "c" },
+      { "label": "HTMLFormElement", "value": "d" }
+    ],
+    "answer": "a"
+  }
+]

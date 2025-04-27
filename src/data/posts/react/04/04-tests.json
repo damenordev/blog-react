@@ -1,0 +1,52 @@
+[
+  {
+    "question": "¿Cuál es la forma más clara y recomendada de renderizar condicionalmente un componente en React?",
+    "options": [
+      "Usar un if return al inicio del componente",
+      "Anidar operadores ternarios en el JSX",
+      "Renderizar siempre el componente y ocultarlo con CSS",
+      "Usar switch dentro del render"
+    ],
+    "answer": 0,
+    "explanation": "El patrón if return es el más claro y legible para renderizado condicional."
+  },
+  {
+    "question": "¿Por qué no se recomienda usar el índice del array como key en una lista renderizada con .map()?",
+    "options": [
+      "Porque React no lo permite",
+      "Porque puede causar problemas de rendimiento y bugs al manipular la lista",
+      "Porque el índice es siempre único",
+      "Porque genera warnings de TypeScript"
+    ],
+    "answer": 1,
+    "explanation": "El índice solo debe usarse si la lista es estática; en listas dinámicas puede causar renderizados incorrectos."
+  },
+  {
+    "question": "¿Qué operador lógico permite mostrar un elemento solo si una condición es verdadera en JSX?",
+    "options": ["&&", "||", "??", "=="],
+    "answer": 0,
+    "explanation": "El operador lógico && es el más usado para renderizado condicional simple en JSX."
+  },
+  {
+    "question": "¿Qué se debe hacer para que una lista renderizada se actualice correctamente al agregar o eliminar elementos?",
+    "options": [
+      "Modificar el array original directamente",
+      "Crear un nuevo array usando spread y setState",
+      "Llamar a forceUpdate()",
+      "Usar setTimeout para actualizar la lista"
+    ],
+    "answer": 1,
+    "explanation": "Siempre crea un nuevo array con spread para que React detecte el cambio y renderice la lista."
+  },
+  {
+    "question": "¿Cuál de los siguientes es un anti-patrón al renderizar listas en React?",
+    "options": [
+      "Asignar una key única basada en el id del elemento",
+      "Usar el índice del array como key en listas dinámicas",
+      "Desestructurar props en el map",
+      "Usar fragmentos para envolver elementos"
+    ],
+    "answer": 1,
+    "explanation": "Usar el índice como key en listas dinámicas puede causar errores de renderizado y debe evitarse."
+  }
+]

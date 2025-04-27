@@ -160,8 +160,6 @@ Los comentarios en JSX se escriben así:
 ## Recursos recomendados
 
 - [Documentación oficial de React (español)](https://es.react.dev/learn)
-- [Introducción a JSX (React docs)](https://legacy.reactjs.org/docs/introducing-jsx.html)
-- [Primeros pasos en React (MDN)](https://developer.mozilla.org/es/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started)
 
 ---
 

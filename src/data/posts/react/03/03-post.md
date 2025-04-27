@@ -181,10 +181,7 @@ export const Contador = ({ inicial }: IContadorProps): JSX.Element => {
 
 ## 8. Recursos recomendados
 
-- [React 19: useState](https://react.dev/reference/react/useState)
-- [React 19: useEffect](https://react.dev/reference/react/useEffect)
-- [React 19: Estado y Hooks](https://react.dev/learn/state-a-components-memory)
-- [TypeScript Handbook: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+- [Documentación oficial de React (español)](https://es.react.dev/learn)
 
 ## 9. Conclusión
 
