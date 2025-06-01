@@ -29,6 +29,7 @@ export const helloWorldExercise: IExercise = {
     'El componente debe ser una función.'
   ],
   initialFiles: {
+    '/components/HelloWorld.tsx': appCode,
     '/App.tsx': appCode,
     '/index.tsx': indexCode,
   },

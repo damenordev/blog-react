@@ -25,7 +25,7 @@ export const ExercisePlayground = () => {
   // Adaptar la función para inicializar/cambiar los archivos
   const initializeFiles = (exercise: IExercise) => {
     // Asegurarnos de que el tipo coincida (TExerciseFiles a SandpackFiles)
-    setFiles(exercise.initialFiles as SandpackFiles)
+    setFiles(exercise.initialFiles)
   }
 
   // Manejar el cambio de ejercicio
@@ -91,7 +91,7 @@ export const ExercisePlayground = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col space-y-6 max-w-full pt-20 h-full relative">
+    <div className="flex-1 flex flex-col h-full relative">
       {/* Header con título y descripción */}
       <div className="space-y-2">
         <div className="flex items-center gap-3">
@@ -197,21 +197,21 @@ export const ExercisePlayground = () => {
       </div>
 
       {/* Editor y Preview con Sandpack */}
-      <div className="flex-1 rounded-lg overflow-hidden border h-full">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10">
         <SandpackProvider
           template="react-ts" // Usamos la plantilla react-ts
           files={files}
           className="flex-1 w-full flex"
           theme="dark" // Opcional: tema claro/oscuro automático
         >
-          <SandpackLayout className="h-full w-full">
+          <SandpackLayout className="h-full w-full flex fixed top-0 left-0" tw="h-full w-full" style={{ width: '100%', height: '100vh' }}>
             {/* Estructura manual del layout */}
-            <SandpackFileExplorer />
-            <SandpackCodeEditor className="h-full w-full" />
+            <SandpackFileExplorer style={{ width: '100%', height: '100vh' }} />
+            <SandpackCodeEditor style={{ width: '100%', height: '100vh' }} />
             {/* Contenedor para Preview y Consola */}
-            <SandpackPreview style={{ flex: 1 }} /> {/* Ocupa el espacio principal */}
+            <SandpackPreview style={{ width: '100%', height: '100vh' }} /> {/* Ocupa el espacio principal */}
           </SandpackLayout>
-          <SandpackConsole style={{ height: '150px' }} /> {/* Altura fija para la consola */}{' '}
+          {/* <SandpackConsole tw="h-full" /> Altura fija para la consola */}
         </SandpackProvider>
       </div>
     </div>

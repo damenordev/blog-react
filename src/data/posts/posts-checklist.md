@@ -9,7 +9,7 @@
 - [x] Estado y hooks básicos
 - [x] Renderizado condicional y listas
 - [x] Eventos y formularios
-- [ ] Hooks avanzados
+- [x] Hooks avanzados
 - [ ] Contexto y estado global
 - [ ] Renderizado en servidor y Server Components
 - [ ] Optimización de rendimiento y Suspense
