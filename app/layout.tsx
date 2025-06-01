@@ -14,7 +14,7 @@ export default async function RootLayout({ children }: ILayout) {
     <html lang="es" className="h-full">
       {/* Asegura flex y altura completa en body */}
       <body className={cn(getFontsVariables(), 'dark w-full overflow-x-hidden min-h-screen flex flex-col bg-background text-foreground')}>
-        <Header />
+        {/* <Header /> */}
         {/* No necesita flex-1 aquí directamente si main lo tiene */}
         {children}
       </body>
