@@ -4,8 +4,9 @@ import { Home } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
-import { SelectLanguage } from './SelectLanguage'
 import { Button } from '@/ui'
+
+import { SelectLanguage } from './SelectLanguage'
 
 export const Header = async () => {
   const user = await getAuthUser()
