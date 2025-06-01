@@ -16,7 +16,7 @@ const getLang = (locale: string) => {
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children, locale }) => {
   return (
     <StackProvider app={authServerApp} lang={getLang(locale)}>
-      <StackTheme>{children}</StackTheme>
+      <StackTheme theme={{ radius: '0.825rem' }}>{children}</StackTheme>
     </StackProvider>
   )
 }

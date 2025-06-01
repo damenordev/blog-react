@@ -14,7 +14,7 @@ export default async function LocaleLayout({ children, params }: ILayoutWithLoca
   const { locale } = await params
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className={cn(fonts, 'relative min-h-screen w-full bg-background text-foreground overflow-x-hidden')}>
         <AppProvider locale={locale}>
           <Header />

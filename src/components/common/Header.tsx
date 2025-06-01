@@ -4,9 +4,9 @@ import { Home } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
+import { LanguageSwitcher } from '@/i18n/components'
 import { Button } from '@/ui'
-
-import { SelectLanguage } from './SelectLanguage'
+import { AccountSettingsModal } from '@/auth/components'
 
 export const Header = async () => {
   const user = await getAuthUser()
@@ -19,14 +19,15 @@ export const Header = async () => {
       </Link>
 
       <div className="flex items-center gap-2">
-        <SelectLanguage />
+        <LanguageSwitcher />
         {user ? (
-          <UserButton />
+          <>
+            <UserButton />
+            <AccountSettingsModal />
+          </>
         ) : (
-          <Button asChild>
-            <Link className="text-nowrap cursor-pointer hover:underline" href="/auth/sign-in">
-              {t('signIn')}
-            </Link>
+          <Button asChild size="sm">
+            <Link href="/auth/sign-in">{t('signIn')}</Link>
           </Button>
         )}
       </div>

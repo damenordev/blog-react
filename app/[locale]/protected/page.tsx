@@ -7,7 +7,7 @@ export default async function ProtectedPage() {
   const auth = await getAuthUser()
   const t = await getTranslations('ProtectedPage')
 
-  if (!auth) return redirect('/auth/signin')
+  if (!auth) return redirect('/')
 
   return (
     <div>
