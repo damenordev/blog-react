@@ -1,0 +1,25 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page",
+    "protectedLink": "Go to protected page"
+  },
+  "SelectLanguage": {
+    "title": "Language",
+    "selectPlaceholder": "Select language",
+    "names": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "ProtectedPage": {
+    "title": "Protected Page",
+    "description": "Only authenticated users can see this page"
+  },
+  "Loading": {
+    "text": "Loading..."
+  },
+  "Header": {
+    "signIn": "Sign In"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "HomePage": {
+    "title": "¡Hola Mundo!",
+    "about": "Ir a la página de acerca de",
+    "protectedLink": "Ir a la página protegida"
+  },
+  "SelectLanguage": {
+    "title": "Idioma",
+    "selectPlaceholder": "Seleccionar idioma",
+    "names": {
+      "en": "Inglés",
+      "es": "Español"
+    }
+  },
+  "ProtectedPage": {
+    "title": "Página Protegida",
+    "description": "Solo los usuarios autenticados pueden ver esta página"
+  },
+  "Loading": {
+    "text": "Cargando..."
+  },
+  "Header": {
+    "signIn": "Iniciar Sesión"
+  }
+}

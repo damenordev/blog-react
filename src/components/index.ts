@@ -1,3 +1,1 @@
-export * from './ButtonDownloadPDF'
-export * from './CheatSheetArticle'
-export * from './Layout'
+export * from './common'

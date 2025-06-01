@@ -1,8 +1,7 @@
-import { Comfortaa, Acme } from 'next/font/google'
+import { Comfortaa, Poppins } from 'next/font/google'
+import { cn } from './cn.styles'
 
-const fontPrimary = Comfortaa({ subsets: ['latin'], variable: '--font-primary' })
-const fontSecondary = Acme({ subsets: ['latin'], variable: '--font-secondary', weight: ['400'] })
+const fontSans = Poppins({ variable: '--font-sans', subsets: ['latin'], weight: '400' })
+const fontMono = Comfortaa({ variable: '--font-mono', subsets: ['latin'] })
 
-export const getFontsVariables = () => {
-  return `${fontPrimary.variable} ${fontSecondary.variable}`
-}
+export const fonts = cn(fontSans.variable, fontMono.variable)

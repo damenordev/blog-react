@@ -1,6 +1,0 @@
-export * from './Hero'
-export * from './Features'
-export * from './FeaturedArticles'
-export * from './Resources'
-export * from './Testimonials'
-export * from './CTA'
