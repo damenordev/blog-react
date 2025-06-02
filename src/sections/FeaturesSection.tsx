@@ -52,7 +52,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section className="container mx-auto max-w-5xl mt-40">
+    <section className="container mx-auto max-w-5xl mt-40 px-4 md:px-0">
       <div className="text-center mb-12 md:mb-16">
         <span className="block text-sm font-semibold uppercase tracking-wider text-primary mb-2">Explora React</span>
         <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-center">Características Esenciales</h3>
