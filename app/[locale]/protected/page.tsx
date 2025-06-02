@@ -1,13 +1,10 @@
-import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 
-import { getAuthUser } from '@/auth/server'
+import { checkAuthAndRedirect } from '@/auth/server'
 
 export default async function ProtectedPage() {
-  const auth = await getAuthUser()
+  await checkAuthAndRedirect()
   const t = await getTranslations('ProtectedPage')
-
-  if (!auth) return redirect('/')
 
   return (
     <div>

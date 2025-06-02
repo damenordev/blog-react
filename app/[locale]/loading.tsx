@@ -1,20 +1,11 @@
-import { getTranslations } from 'next-intl/server'
+import { AnimatedLogo } from '@/components/common'
 
 export default async function Loading() {
-  const t = await getTranslations('Loading')
-  // Puedes reemplazar esto con un esqueleto de carga personalizado o un spinner
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        fontSize: '1.5rem',
-        fontFamily: 'sans-serif',
-      }}
-    >
-      <p>{t('text')}</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+      <div className="flex flex-col items-center gap-4">
+        <AnimatedLogo className="text-primary size-40" />
+      </div>
     </div>
   )
 }

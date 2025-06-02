@@ -1,6 +1,6 @@
 import 'server-only'
-
 import { StackServerApp } from '@stackframe/stack'
+import { redirect } from 'next/navigation'
 
 export const authServerApp = new StackServerApp({
   tokenStore: 'nextjs-cookie',
@@ -15,3 +15,8 @@ export const authServerApp = new StackServerApp({
 })
 
 export const getAuthUser = () => authServerApp.getUser()
+
+export const checkAuthAndRedirect = async (redirectTo = '/auth/signin') => {
+  const auth = await getAuthUser()
+  if (!auth) return redirect(redirectTo)
+}

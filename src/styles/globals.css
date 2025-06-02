@@ -85,8 +85,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.804 0.179 227.5);
+  --primary-foreground: oklch(0.252 0.029 260.5);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -126,5 +126,57 @@
   ::-webkit-scrollbar-thumb {
     background-color: var(--card);
     border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 30s linear infinite;
+  }
+
+  .animate-spin-reverse {
+    animation: spin-reverse 2s linear infinite;
+  }
+
+  .animate-pulse-scale {
+    animation: pulse-scale 3s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes pulse-scale {
+    0%,
+    100% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes opacity-pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 }
