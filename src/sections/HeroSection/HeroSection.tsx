@@ -125,7 +125,7 @@ export const HeroSection = () => {
                 >
                   <div key={1} className="bg-foreground/10 rounded-[14px] border p-0.5">
                     <Button asChild size="lg" className="rounded-xl px-5 text-base">
-                      <Link href="/playground/editor">
+                      <Link href="/admin">
                         <span className="text-nowrap">Comenzar a Aprender</span>
                       </Link>
                     </Button>

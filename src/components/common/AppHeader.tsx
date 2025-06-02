@@ -1,15 +1,16 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu } from 'lucide-react'
+import { LogIn, Menu } from 'lucide-react'
 
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/ui/sheet'
 import { cn } from '@/styles'
 import { Button } from '@/ui/button'
 import { Logo } from '@/components/common/Logo'
+import { SelectLanguage } from './SelectLanguage'
 
 const menuItems = [
-  { name: 'Playground IA', href: '/playground/editor' },
+  // { name: 'Playground IA', href: '/admin' },
   { name: 'Ejercicios', href: '/ejercicios' },
   { name: 'Tutoriales', href: '/tutoriales' },
   { name: 'Blog', href: '/blog' },
@@ -113,16 +114,7 @@ export const AppHeader = () => {
 
             <div className="hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className={cn('hidden', isScrolled && 'lg:hidden', !isScrolled && 'lg:inline-flex')}
-                >
-                  <Link href="/auth/signin">
-                    <span>Inicio Sesión</span>
-                  </Link>
-                </Button>
+                <SelectLanguage />
                 <Button
                   asChild
                   size="sm"
@@ -132,8 +124,20 @@ export const AppHeader = () => {
                     <span>Registrarse</span>
                   </Link>
                 </Button>
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="icon"
+                  className={cn('hidden', isScrolled && 'lg:hidden', !isScrolled && 'lg:inline-flex')}
+                >
+                  <Link href="/auth/signin">
+                    <span>
+                      <LogIn className="size-4" />
+                    </span>
+                  </Link>
+                </Button>
                 <Button asChild size="sm" className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                  <Link href="/playground/editor">
+                  <Link href="/admin">
                     <span>Comenzar a Aprender</span>
                   </Link>
                 </Button>

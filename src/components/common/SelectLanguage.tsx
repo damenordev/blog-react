@@ -17,7 +17,7 @@ export const SelectLanguage = () => {
 
   return (
     <Select value={currentLocale} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-full" size="sm">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder={t('selectPlaceholder')} />
       </SelectTrigger>
       <SelectContent>
