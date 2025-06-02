@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Estructura de la Landing Page
 
-## Getting Started
+## 1. Hero Section
 
-First, run the development server:
+- Presentación principal con valor clave
+- Llamada a la acción principal (ej: "Empieza a Aprender Gratis")
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 2. Prueba Social (Opcional)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Testimonios breves de usuarios
+- Logos de empresas o menciones en medios (si aplica)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 3. Características Esenciales
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Muestra de funcionalidades clave en formato BentoGrid
+- Enfoque en beneficios para el usuario
 
-## Learn More
+## 4. ¿Cómo Funciona?
 
-To learn more about Next.js, take a look at the following resources:
+- Explicación visual del flujo de aprendizaje
+- 3-4 pasos simples del proceso
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 5. MagicText - Valor con IA
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Refuerzo del diferenciador de IA
+- Mensaje inspirador sobre el futuro del desarrollo
 
-## Deploy on Vercel
+## 6. Contenido Destacado
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Muestra de tutoriales o artículos populares
+- Enlaces a secciones clave del blog
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 7. Planes y Precios
+
+- **Gratis**: Acceso básico
+
+  - Características incluidas
+  - Limitaciones claras
+  - CTA: "Comenzar Gratis"
+
+- **Básico** (Precio/mes)
+
+  - Todas las características gratuitas
+  - Beneficios adicionales
+  - CTA: "Elegir Básico"
+
+- **Pro** (Precio/mes)
+  - Acceso completo
+  - Beneficios premium
+  - CTA: "Obtener Pro"
+
+## 8. Llamada a la Acción Final
+
+- Recordatorio del valor principal
+- CTA destacado
+- Garantía o prueba gratuita si aplica
+
+## 9. Preguntas Frecuentes
+
+- Dudas comunes sobre precios
+- Información de facturación
+- Políticas de cancelación
+
+## 10. Footer
+
+- Enlaces de navegación
+- Términos y condiciones
+- Redes sociales
+- Información de contacto
+
+## Consideraciones Adicionales
+
+- Diseño responsive para móviles
+- Velocidad de carga optimizada
+- Llamados a la acción claros y visibles
+- Rutas de conversión bien definidas

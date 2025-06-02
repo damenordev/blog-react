@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-select": "^2.2.5",
@@ -17,6 +19,7 @@
     "@stackframe/stack": "^2.8.12",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.15.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.3",
     "next-intl": "^4.1.0",

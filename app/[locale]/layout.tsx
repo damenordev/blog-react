@@ -1,4 +1,3 @@
-import { Header } from '@/components'
 import { i18nLocales } from '@/i18n/routing'
 import { cn, fonts } from '@/styles'
 import { AppProvider } from '@/providers'
@@ -16,10 +15,7 @@ export default async function LocaleLayout({ children, params }: ILayoutWithLoca
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={cn(fonts, 'relative min-h-screen w-full bg-background text-foreground overflow-x-hidden')}>
-        <AppProvider locale={locale}>
-          <Header />
-          {children}
-        </AppProvider>
+        <AppProvider locale={locale}>{children}</AppProvider>
       </body>
     </html>
   )
