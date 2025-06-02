@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
@@ -13,7 +14,7 @@ const menuItems = [
   { name: 'Blog', href: '/blog' },
 ]
 
-export const HeroSectionHeader = () => {
+export const AppHeader = () => {
   const [menuState, setMenuState] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 

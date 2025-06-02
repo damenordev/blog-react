@@ -1,5 +1,5 @@
 import { ILayout } from '@/types'
 
 export default function AuthLayout({ children }: ILayout) {
-  return <div className="flex items-center justify-center pt-60">{children}</div>
+  return <div className="pt-48 flex items-center justify-center">{children}</div>
 }

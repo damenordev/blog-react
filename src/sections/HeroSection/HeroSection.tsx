@@ -5,8 +5,6 @@ import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/ui/button'
 import { AnimatedGroup } from '@/ui/animated-group'
 
-import { HeroSectionHeader } from './HeroSectionHeader'
-
 const transitionVariants = {
   item: {
     hidden: {
@@ -30,7 +28,6 @@ const transitionVariants = {
 export const HeroSection = () => {
   return (
     <>
-      <HeroSectionHeader />
       <main className="overflow-hidden">
         <div
           aria-hidden
