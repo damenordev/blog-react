@@ -1,7 +1,7 @@
 import { FeaturesSection, HeroSection } from '@/sections'
 import { MagicText } from '@/ui'
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
       <HeroSection />
